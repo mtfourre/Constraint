@@ -6,7 +6,7 @@
 
 import UIKit
 
-public func constrain(_ attributing: NSLayoutAttribute?, of constraining: Any?, _ relation: NSLayoutRelation? = nil, to attributed: NSLayoutAttribute?, of constrained: Any?, by constant: CGFloat? = nil, multiplier: CGFloat? = nil) {
+public func constrain(_ attributing: NSLayoutConstraint.Attribute?, of constraining: Any?, _ relation: NSLayoutConstraint.Relation? = nil, to attributed: NSLayoutConstraint.Attribute?, of constrained: Any?, by constant: CGFloat? = nil, multiplier: CGFloat? = nil) {
     guard let constraining = constraining else { return }
     NSLayoutConstraint.activate([NSLayoutConstraint(
         item: constraining,
@@ -19,15 +19,15 @@ public func constrain(_ attributing: NSLayoutAttribute?, of constraining: Any?, 
     )])
 }
 
-public func constrain(_ attributes: [NSLayoutAttribute], of constraining: Any?, to constrained: Any?, by constant: CGFloat? = nil) {
+public func constrain(_ attributes: [NSLayoutConstraint.Attribute], of constraining: Any?, to constrained: Any?, by constant: CGFloat? = nil) {
     attributes.forEach({ constrain($0, of: constraining, to: $0, of: constrained, by: constant) })
 }
 
-public func constrain(_ attributes: [NSLayoutAttribute], of constraining: Any?, by constant: CGFloat?) {
+public func constrain(_ attributes: [NSLayoutConstraint.Attribute], of constraining: Any?, by constant: CGFloat?) {
     attributes.forEach({ constrain($0, of: constraining, by: constant) })
 }
 
-public func constrain(_ attributing: NSLayoutAttribute?, of constraining: Any?, by constant: CGFloat?) {
+public func constrain(_ attributing: NSLayoutConstraint.Attribute?, of constraining: Any?, by constant: CGFloat?) {
     constrain(attributing, of: constraining, to: .notAnAttribute, of: nil, by: constant)
 }
 
